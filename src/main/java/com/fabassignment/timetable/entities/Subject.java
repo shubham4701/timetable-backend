@@ -1,9 +1,11 @@
 package com.fabassignment.timetable.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Subject {
@@ -14,6 +16,9 @@ public class Subject {
 
 	private String subjectCode;
 	private String subjectName;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Class clas;
 
 	public Subject(String subjectCode, String subjectName) {
 		super();

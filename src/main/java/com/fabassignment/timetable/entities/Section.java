@@ -1,9 +1,11 @@
 package com.fabassignment.timetable.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Section {
@@ -13,6 +15,9 @@ public class Section {
 
 	private String sectionCode;
 	private String sectionName;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Class clas;
 
 	public Section(String code, String name) {
 		this.sectionCode = code;

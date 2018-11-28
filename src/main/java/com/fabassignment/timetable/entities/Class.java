@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,10 +21,10 @@ public class Class {
 	private String classCode;
 	private String className;
 
-	@OneToMany(mappedBy = "class_section", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clas", cascade = CascadeType.ALL)
 	private List<Section> sections = new ArrayList<>();
 
-	@OneToMany(mappedBy = "class_subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clas", cascade = CascadeType.ALL)
 	private List<Subject> subjects = new ArrayList<>();
 
 	public Class(String code, String name) {
