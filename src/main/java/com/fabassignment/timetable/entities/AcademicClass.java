@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Class {
+public class AcademicClass {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,13 +21,13 @@ public class Class {
 	private String classCode;
 	private String className;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clas", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "academicClass", cascade = CascadeType.ALL)
 	private List<Section> sections = new ArrayList<>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clas", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "academicClass", cascade = CascadeType.ALL)
 	private List<Subject> subjects = new ArrayList<>();
 
-	public Class(String code, String name) {
+	public AcademicClass(String code, String name) {
 		this.classCode = code;
 		this.className = name;
 	}
@@ -52,7 +52,7 @@ public class Class {
 	public String toString() {
 		// TODO Auto-generated method stub
 		StringBuilder result = new StringBuilder(
-				String.format("Class[id=%d, classCode='%s', className='%s']", id, classCode, className));
+				String.format("AcademicClass[id=%d, classCode='%s', className='%s']", id, classCode, className));
 		if (sections.size() > 0) {
 			for (Section section : sections) {
 				result.append(String.format("Section[id=%d, code='%s', name='%s']%n", section.getId(),

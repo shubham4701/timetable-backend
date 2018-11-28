@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fabassignment.timetable.entities.Class;
+import com.fabassignment.timetable.entities.AcademicClass;
 import com.fabassignment.timetable.entities.Section;
 import com.fabassignment.timetable.repository.ClassRepository;
 import com.fabassignment.timetable.repository.SectionRepository;
@@ -39,9 +39,9 @@ public class SectionController {
 
 	@PostMapping()
 	public Section createSection(Long classId, String code, String name) throws Exception {
-		Optional<com.fabassignment.timetable.entities.Class> class1 = classRepository.findById(classId);
+		Optional<com.fabassignment.timetable.entities.AcademicClass> class1 = classRepository.findById(classId);
 		if (class1.isPresent()) {
-			Class data = class1.get();
+			AcademicClass data = class1.get();
 			List<Section> sections = data.getSections();
 			Section section = repo.save(new Section(code, name));
 			sections.add(section);

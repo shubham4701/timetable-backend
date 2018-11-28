@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fabassignment.timetable.entities.Class;
+import com.fabassignment.timetable.entities.AcademicClass;
 import com.fabassignment.timetable.repository.ClassRepository;
 
 @RestController
@@ -21,19 +21,19 @@ public class ClassController {
 	ClassRepository repo;
 
 	@GetMapping("/")
-	public Iterable<Class> getClasses() {
+	public Iterable<AcademicClass> getClasses() {
 		return repo.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Class getClass(@PathVariable(value = "id") Long id) {
-		Optional<Class> data = repo.findById(id);
+	public AcademicClass getClass(@PathVariable(value = "id") Long id) {
+		Optional<AcademicClass> data = repo.findById(id);
 		return data.orElseThrow(NoSuchElementException::new);
 	}
 
 	@PostMapping()
-	public Class createClass(String code, String name) {
-		return repo.save(new Class(code, name));
+	public AcademicClass createClass(String code, String name) {
+		return repo.save(new AcademicClass(code, name));
 	}
 
 }

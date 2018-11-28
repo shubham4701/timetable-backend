@@ -17,7 +17,7 @@ public class Section {
 	private String sectionName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Class clas;
+	private AcademicClass academicClass;
 
 	public Section(String code, String name) {
 		this.sectionCode = code;
